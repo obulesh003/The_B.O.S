@@ -1,0 +1,16 @@
+[unit]
+Description=Simple Display Manager
+Documentation=man::sddm(1).conf(5)
+conflicts-getty@ttyl.service
+After=systemd-user-sessions.service getty@ttyl.service plymouth-quit.service systemd-logind.service
+PartOf=graphical.target
+StartLimitIntervalSec=30
+StartLimitBurst=2
+
+
+[service]
+ExecStart=/usr/bin/sddm
+Restart=always
+
+[Install]
+Alias=display-manager.service
